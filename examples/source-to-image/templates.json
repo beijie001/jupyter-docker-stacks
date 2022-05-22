@@ -282,7 +282,7 @@
 
                     "ports": [
                       {
-                        "containerPort": 8888,
+                        "containerPort": 6888,
                         "protocol": "TCP"
                       }
                     ],
@@ -333,7 +333,7 @@
               "weight": 100
             },
             "port": {
-              "targetPort": "8888-tcp"
+              "targetPort": "6888-tcp"
             },
             "tls": {
               "termination": "edge",
@@ -353,10 +353,10 @@
           "spec": {
             "ports": [
               {
-                "name": "8888-tcp",
+                "name": "6888-tcp",
                 "protocol": "TCP",
-                "port": 8888,
-                "targetPort": 8888
+                "port": 6888,
+                "targetPort": 6888
               }
             ],
             "selector": {

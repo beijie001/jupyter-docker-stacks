@@ -84,7 +84,7 @@ The output will be similar to:
 
 ```lang-none
 NAME       HOST/PORT                                               PATH      SERVICES   PORT       TERMINATION     WILDCARD
-notebook   notebook-jupyter.abcd.pro-us-east-1.openshiftapps.com             notebook   8888-tcp   edge/Redirect   None
+notebook   notebook-jupyter.abcd.pro-us-east-1.openshiftapps.com             notebook   6888-tcp   edge/Redirect   None
 ```
 
 A secure route will be used to expose the notebook outside the OpenShift cluster, so in this case the URL would be:

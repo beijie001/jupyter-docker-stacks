@@ -53,7 +53,7 @@ docker images
 You can now run the image.
 
 ```bash
-docker run --rm -p 8888:8888 notebook-examples
+docker run --rm -p 6888:6888 notebook-examples
 ```
 
 Open your browser on the URL displayed, and you will find the notebooks from the Git repository and can work with them.
@@ -159,7 +159,7 @@ To see the hostname for accessing the notebook, run `oc get routes`.
 
 ```lang-none
 NAME                HOST/PORT                                                       PATH SERVICES           PORT      TERMINATION    WILDCARD
-notebook-examples   notebook-examples-jupyter.abcd.pro-us-east-1.openshiftapps.com       notebook-examples  8888-tcp  edge/Redirect  None
+notebook-examples   notebook-examples-jupyter.abcd.pro-us-east-1.openshiftapps.com       notebook-examples  6888-tcp  edge/Redirect  None
 ```
 
 As the deployment will use a secure connection, the URL for accessing the notebook in this case would be <https://notebook-examples-jupyter.abcd.pro-us-east-1.openshiftapps.com>.

@@ -12,7 +12,7 @@ def test_secured_server(
 ) -> None:
     """Notebook server should eventually request user login."""
     host_port = find_free_port()
-    container.run_detached(ports={"8888/tcp": host_port})
+    container.run_detached(ports={"6888/tcp": host_port})
     resp = http_client.get(f"http://localhost:{host_port}")
     resp.raise_for_status()
     assert "login_submit" in resp.text, "User login not requested"

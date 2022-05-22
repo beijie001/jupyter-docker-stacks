@@ -16,11 +16,11 @@ The following are some common patterns.
 **Example 1:**
 
 This command pulls the `jupyter/scipy-notebook` image tagged `6b49f3337709` from Docker Hub if it is not already present on the local host.
-It then starts a container running a Jupyter Notebook server and exposes the server on host port 8888.
+It then starts a container running a Jupyter Notebook server and exposes the server on host port 6888.
 The server logs appear in the terminal and include a URL to the notebook server.
 
 ```bash
-docker run -it -p 8888:8888 jupyter/scipy-notebook:6b49f3337709
+docker run -it -p 6888:6888 jupyter/scipy-notebook:6b49f3337709
 
 # Entered start.sh with args: jupyter lab
 
@@ -29,8 +29,8 @@ docker run -it -p 8888:8888 jupyter/scipy-notebook:6b49f3337709
 #     To access the server, open this file in a browser:
 #         file:///home/jovyan/.local/share/jupyter/runtime/jpserver-7-open.html
 #     Or copy and paste one of these URLs:
-#         http://042fc8ac2b0c:8888/lab?token=f31f2625f13d131f578fced0fc76b81d10f6c629e92c7099
-#      or http://127.0.0.1:8888/lab?token=f31f2625f13d131f578fced0fc76b81d10f6c629e92c7099
+#         http://042fc8ac2b0c:6888/lab?token=f31f2625f13d131f578fced0fc76b81d10f6c629e92c7099
+#      or http://127.0.0.1:6888/lab?token=f31f2625f13d131f578fced0fc76b81d10f6c629e92c7099
 ```
 
 Pressing `Ctrl-C` twice shuts down the notebook server but leaves the container intact on disk for later restart or permanent deletion using commands like the following:
@@ -55,10 +55,10 @@ docker rm 221331c047c4
 
 This command pulls the `jupyter/r-notebook` image tagged `6b49f3337709` from Docker Hub if it is not already present on the local host.
 It then starts a container running a Jupyter Notebook server and exposes the server on host port 10000.
-The server logs appear in the terminal and include a URL to the notebook server, but with the internal container port (8888) instead of the correct host port (10000).
+The server logs appear in the terminal and include a URL to the notebook server, but with the internal container port (6888) instead of the correct host port (10000).
 
 ```bash
-docker run -it --rm -p 10000:8888 -v "${PWD}":/home/jovyan/work jupyter/r-notebook:6b49f3337709
+docker run -it --rm -p 10000:6888 -v "${PWD}":/home/jovyan/work jupyter/r-notebook:6b49f3337709
 ```
 
 Pressing `Ctrl-C` twice shuts down the notebook server and immediately destroys the Docker container.
@@ -81,16 +81,16 @@ where:
 You can also use the following docker commands to see the port and notebook server token:
 
 ```bash
-# get the random host port assigned to the container port 8888
-docker port notebook 8888
+# get the random host port assigned to the container port 6888
+docker port notebook 6888
 # 0.0.0.0:49153
 # :::49153
 
 # get the notebook token from the logs
 docker logs --tail 3 notebook
     # Or copy and paste one of these URLs:
-    #     http://878f1a9b4dfa:8888/lab?token=d336fa63c03f064ff15ce7b269cab95b2095786cf9ab2ba3
-    #  or http://127.0.0.1:8888/lab?token=d336fa63c03f064ff15ce7b269cab95b2095786cf9ab2ba3
+    #     http://878f1a9b4dfa:6888/lab?token=d336fa63c03f064ff15ce7b269cab95b2095786cf9ab2ba3
+    #  or http://127.0.0.1:6888/lab?token=d336fa63c03f064ff15ce7b269cab95b2095786cf9ab2ba3
 ```
 
 Together, the URL to visit on the host machine to access the server, in this case, is <http://127.0.0.1:49153/lab?token=d336fa63c03f064ff15ce7b269cab95b2095786cf9ab2ba3>.
@@ -132,10 +132,10 @@ subgidSize=$(( $(podman info --format "{{ range .Host.IDMappings.GIDMap }}+{{.Si
 
 This command pulls the `docker.io/jupyter/r-notebook` image tagged `6b49f3337709` from Docker Hub if it is not already present on the local host.
 It then starts a container running a Jupyter Server and exposes the server on host port 10000.
-The server logs appear in the terminal and include a URL to the notebook server, but with the internal container port (8888) instead of the correct host port (10000).
+The server logs appear in the terminal and include a URL to the notebook server, but with the internal container port (6888) instead of the correct host port (10000).
 
 ```bash
-podman run -it --rm -p 10000:8888 \
+podman run -it --rm -p 10000:6888 \
     -v "${PWD}":/home/jovyan/work --user $uid:$gid \
     --uidmap $uid:0:1 --uidmap 0:1:$uid --uidmap $(($uid+1)):$(($uid+1)):$(($subuidSize-$uid)) \
     --gidmap $gid:0:1 --gidmap 0:1:$gid --gidmap $(($gid+1)):$(($gid+1)):$(($subgidSize-$gid)) \

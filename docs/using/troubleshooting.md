@@ -12,7 +12,7 @@ If you are running a Docker container while mounting a local volume or host dire
 
 ```bash
 docker run -it --rm \
-    -p 8888:8888 \
+    -p 6888:6888 \
     -v <my-vol>:<container-dir> \
     jupyter/minimal-notebook:latest
 ```
@@ -44,7 +44,7 @@ The following sections cover a few of these scenarios and how to fix them.
    # running in detached mode - can also be run in interactive mode
    docker run -d \
        -v <my-vol>:<container-dir> \
-       -p 8888:8888 \
+       -p 6888:6888 \
        --user root \
        -e CHOWN_EXTRA="<container-dir>" \
        -e CHOWN_EXTRA_OPTS="-R" \
@@ -91,7 +91,7 @@ The following sections cover a few of these scenarios and how to fix them.
    ```bash
    docker run -it --rm \
        --user root \
-       -p 8888:8888 \
+       -p 6888:6888 \
        -e NB_UID=1234 \
        -e NB_GID=5678 \
        -v "${PWD}"/test:/home/jovyan/work \
@@ -134,7 +134,7 @@ If you have also **created a new user**, you might be experiencing any of the fo
 
    ```bash
     docker run -it --rm \
-        -p 8888:8888 \
+        -p 6888:6888 \
         --user root \
         -e NB_USER=callisto \
         -e NB_UID=1234 \
@@ -177,7 +177,7 @@ If you have also **created a new user**, you might be experiencing any of the fo
 
    ```bash
    docker run -it --rm \
-       -p 8888:8888 \
+       -p 6888:6888 \
        --user root \
        -e NB_USER=callisto \
        -e NB_UID="$(id -u)" \
@@ -211,7 +211,7 @@ If you have also **created a new user**, you might be experiencing any of the fo
   # the user calling the command, thus matching the local host
 
   docker run -it --rm \
-      -p 8888:8888 \
+      -p 6888:6888 \
       --user "$(id -u)" --group-add users \
       -v <my-vol>:/home/jovyan/work jupyter/datascience-notebook
   ```
@@ -279,8 +279,8 @@ If you are a regular user of VSCode and the Jupyter extension, you might experie
 
   # [...]
   # Or copy and paste one of these URLs:
-  #   http://3d4cf3809e3f:8888/?token=996426e890f8dc22fa6835a44442b6026cba02ee61fee6a2
-  #   or http://127.0.0.1:8888/?token=996426e890f8dc22fa6835a44442b6026cba02ee61fee6a2
+  #   http://3d4cf3809e3f:6888/?token=996426e890f8dc22fa6835a44442b6026cba02ee61fee6a2
+  #   or http://127.0.0.1:6888/?token=996426e890f8dc22fa6835a44442b6026cba02ee61fee6a2
   ```
 
 **Some things to try:**

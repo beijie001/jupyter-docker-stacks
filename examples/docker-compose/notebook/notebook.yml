@@ -12,7 +12,7 @@ services:
     volumes:
       - "work:/home/jovyan/work"
     ports:
-      - "${PORT}:8888"
+      - "${PORT}:6888"
 
 volumes:
   work:

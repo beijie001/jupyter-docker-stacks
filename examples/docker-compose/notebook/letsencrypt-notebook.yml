@@ -13,7 +13,7 @@ services:
       - "work:/home/jovyan/work"
       - "secrets:/etc/letsencrypt"
     ports:
-      - "${PORT}:8888"
+      - "${PORT}:6888"
     environment:
       USE_HTTPS: "yes"
       PASSWORD: ${PASSWORD}

@@ -18,7 +18,7 @@ def test_cli_args(container: TrackedContainer, http_client: requests.Session) ->
     host_port = find_free_port()
     running_container = container.run_detached(
         command=["start-notebook.sh", "--NotebookApp.token=''"],
-        ports={"8888/tcp": host_port},
+        ports={"6888/tcp": host_port},
     )
     resp = http_client.get(f"http://localhost:{host_port}")
     resp.raise_for_status()
@@ -40,7 +40,7 @@ def test_unsigned_ssl(
     host_port = find_free_port()
     running_container = container.run_detached(
         environment=["GEN_CERT=yes"],
-        ports={"8888/tcp": host_port},
+        ports={"6888/tcp": host_port},
     )
     # NOTE: The requests.Session backing the http_client fixture does not retry
     # properly while the server is booting up. An SSL handshake error seems to

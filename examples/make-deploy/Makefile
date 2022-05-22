@@ -9,7 +9,7 @@ IMAGE:=my-notebook
 define RUN_NOTEBOOK
 @docker volume create --name $(WORK_VOLUME) > /dev/null
 -@docker rm -f $(NAME) 2> /dev/null
-@docker run -d -p $(PORT):8888 \
+@docker run -d -p $(PORT):6888 \
 	--name $(NAME) \
 	-v $(WORK_VOLUME):/home/jovyan/work \
 	$(DOCKER_ARGS) \

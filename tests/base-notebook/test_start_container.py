@@ -47,7 +47,7 @@ def test_start_notebook(
         tty=True,
         environment=env,
         command=["start-notebook.sh"],
-        ports={"8888/tcp": host_port},
+        ports={"6888/tcp": host_port},
     )
     # sleeping some time to let the server start
     time.sleep(3)

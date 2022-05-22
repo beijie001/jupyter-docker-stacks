@@ -14,14 +14,14 @@ You can pass [Jupyter server options](https://jupyter-server.readthedocs.io/en/l
    you can run the following (this hash was generated for `my-password` password):
 
    ```bash
-   docker run -it --rm -p 8888:8888 jupyter/base-notebook \
+   docker run -it --rm -p 6888:6888 jupyter/base-notebook \
        start-notebook.sh --NotebookApp.password='sha1:7cca89c48283:e3c1f9fbc06d1d2aa59555dfd5beed925e30dd2c'
    ```
 
 2. To set the [base URL](https://jupyter-server.readthedocs.io/en/latest/operators/public-server.html#running-the-notebook-with-a-customized-url-prefix) of the notebook server, you can run the following:
 
    ```bash
-   docker run  -it --rm -p 8888:8888 jupyter/base-notebook \
+   docker run  -it --rm -p 6888:6888 jupyter/base-notebook \
        start-notebook.sh --NotebookApp.base_url=/customized/url/prefix/
    ```
 
@@ -43,7 +43,7 @@ You do so by passing arguments to the `docker run` command.
 
   ```bash
   docker run -it --rm \
-      -p 8888:8888 \
+      -p 6888:6888 \
       --user root \
       -e NB_USER="my-username" \
       -e CHOWN_HOME=yes \
@@ -141,7 +141,7 @@ You may mount an SSL key and certificate file into a container and configure the
 For example, to mount a host folder containing a `notebook.key` and `notebook.crt` and use them, you might run the following:
 
 ```bash
-docker run -it --rm -p 8888:8888 \
+docker run -it --rm -p 6888:6888 \
     -v /some/host/folder:/etc/ssl/notebook \
     jupyter/base-notebook \
     start-notebook.sh \
@@ -153,7 +153,7 @@ Alternatively, you may mount a single PEM file containing both the key and certi
 For example:
 
 ```bash
-docker run -it --rm -p 8888:8888 \
+docker run -it --rm -p 6888:6888 \
     -v /some/host/folder/notebook.pem:/etc/ssl/notebook.pem \
     jupyter/base-notebook \
     start-notebook.sh \
@@ -200,14 +200,14 @@ Example:
 ```bash
 # Run Jupyter Notebook on Jupyter Server
 docker run -it --rm \
-    -p 8888:8888 \
+    -p 6888:6888 \
     -e DOCKER_STACKS_JUPYTER_CMD=notebook \
     jupyter/base-notebook
 # Executing the command: jupyter notebook ...
 
 # Run Jupyter Notebook classic
 docker run -it --rm \
-    -p 8888:8888 \
+    -p 6888:6888 \
     -e DOCKER_STACKS_JUPYTER_CMD=nbclassic \
     jupyter/base-notebook
 # Executing the command: jupyter nbclassic ...

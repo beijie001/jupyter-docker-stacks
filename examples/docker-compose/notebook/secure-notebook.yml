@@ -12,7 +12,7 @@ services:
     volumes:
       - "work:/home/jovyan/work"
     ports:
-      - "${PORT}:8888"
+      - "${PORT}:6888"
     environment:
       USE_HTTPS: "yes"
       PASSWORD: ${PASSWORD}

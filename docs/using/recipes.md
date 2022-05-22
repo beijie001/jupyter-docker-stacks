@@ -139,7 +139,7 @@ Once built, run using the command:
 
 ```bash
 docker run -it --rm \
-    -p 8888:8888 \
+    -p 6888:6888 \
     -p 8787:8787 jupyter/scipy-dasklabextension:latest
 ```
 
@@ -192,7 +192,7 @@ pip install --quiet --no-cache-dir xgboost && \
 Sometimes it is helpful to run the Jupyter instance behind a nginx proxy, for example:
 
 - you would prefer to access the notebook at a server URL with a path
-  (`https://example.com/jupyter`) rather than a port (`https://example.com:8888`)
+  (`https://example.com/jupyter`) rather than a port (`https://example.com:6888`)
 - you may have many services in addition to Jupyter running on the same server, and want
   nginx to help improve server performance in managing the connections
 
