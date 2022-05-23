@@ -1,6 +1,6 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
-ARG OWNER=jupyter
+ARG OWNER=yibao
 ARG BASE_CONTAINER=$OWNER/minimal-notebook
 FROM $BASE_CONTAINER
 
@@ -11,6 +11,11 @@ LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 USER root
+
+# Change the source to 163.com
+# if DNS can't resolved, set the new dns in the docker config
+RUN sed -i 's/archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list
+RUN sed -i 's/security.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list
 
 RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends \
